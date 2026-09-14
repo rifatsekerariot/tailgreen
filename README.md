@@ -13,11 +13,12 @@
 
 ---
 
-## 📸 Canlı Donanım ve Sistem Görüntüsü
+## 📸 Canlı Donanım ve Sistem Görüntüleri
 
 <div align="center">
-  <img src="assets/device-showcase.jpg" alt="TailGreen - Samsung Galaxy S4 Linux TTY Konsolu" width="600px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" />
-  <p><em>Fotoğraf: Samsung Galaxy S4 üzerinde postmarketOS (Alpine Linux) ve Framebuffer Konsolunun fiziksel AMOLED ekrandan canlı görüntüsü (<code>samsung-jflte login:</code>).</em></p>
+  <img src="assets/device-showcase.jpg" alt="TailGreen - Samsung Galaxy S4 Linux TTY Konsolu" width="48%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); vertical-align: top; margin-bottom: 10px;" />
+  <img src="assets/3a1c2adc-af40-44c4-8b2b-86280fcea5b9.jpeg" alt="TailGreen - Canlı Terminal Görüntüsü" width="48%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); vertical-align: top; margin-bottom: 10px;" />
+  <p><em>Fotoğraflar: Samsung Galaxy S4 üzerinde postmarketOS (Alpine Linux) ve Framebuffer Konsolunun fiziksel AMOLED ekrandan canlı görüntüleri (<code>samsung-jflte login:</code>).</em></p>
 </div>
 
 ---
