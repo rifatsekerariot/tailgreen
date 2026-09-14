@@ -11,8 +11,8 @@ sudo chown -R tor:tor /var/log/tor /var/lib/tor
 
 sudo sh -c 'cat << "EOF" > /etc/tor/torrc
 DataDirectory /var/lib/tor
-SocksPort 0.0.0.0:9050
-SocksPolicy accept 192.168.100.0/24
+SocksPolicy accept 192.168.0.0/16
+SocksPolicy accept 10.0.0.0/8
 SocksPolicy accept 100.64.0.0/10
 SocksPolicy accept 127.0.0.1
 SocksPolicy reject *

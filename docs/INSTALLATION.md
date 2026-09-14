@@ -15,7 +15,7 @@ fastboot: error: Failed reading from userdata (AVB footer check die)
 Modern fastboot sürümleri, eski MBR tabanlı Android telefonların `userdata` bölümüne ham bir Linux disk imajı yazılmasına güvenlik gerekçesiyle engel olmaktadır.
 
 ### 💡 Çözüm: Yerel Linux Sunucusuna Geçiş
-Bu engeli aşmak ve tam yerel donanım erişimi sağlamak için derleme ve yükleme işlemleri doğrudan **Yerel Ubuntu Sunucumuza (`192.168.100.9`)** taşınmıştır:
+Bu engeli aşmak ve tam yerel donanım erişimi sağlamak için derleme ve yükleme işlemleri doğrudan ağdaki bir **Yerel Ubuntu/Debian Sunucusuna** taşınmıştır:
 - **Yerel Sunucu:** Ubuntu Linux x86_64
 - **Fastboot Sürümü:** Debian `34.0.4-debian` (AVB kısıtlamasından etkilenmeyen kararlı sürüm)
 - **Flaşlayıcı:** `heimdall-flash v2.0.2`
@@ -41,7 +41,7 @@ dd if=/dev/block/mmcblk0p21 of=/sdcard/backup/recovery.img bs=4096
 
 ## 🏗️ 3. Adım: Yerel Sunucu Üzerinde postmarketOS Derlemesi
 
-Yerel Ubuntu sunucusu (`192.168.100.9`) üzerinde `pmbootstrap` aracı kuruldu ve yapılandırıldı:
+Yerel Linux sunucusu üzerinde `pmbootstrap` aracı kuruldu ve yapılandırıldı:
 
 ```bash
 # 1. pmbootstrap kurulumu
@@ -52,8 +52,8 @@ export PATH=$PATH:$HOME/.local/bin
 pmbootstrap init
 # Hedef Üretici/Cihaz : samsung / jflte (Samsung Galaxy S4 LTE)
 # Arayüz (UI)         : phosh (daha sonra tty/console'a çevrildi)
-# Kullanıcı Adı       : ariot
-# Şifre               : 1453
+# Kullanıcı Adı       : linuxuser (veya tercih ettiğiniz kullanıcı)
+# Şifre               : <GÜÇLÜ_BİR_ŞİFRE>
 # Saat Dilimi         : Europe/Istanbul
 # Klavye              : tr
 
@@ -63,7 +63,7 @@ pmbootstrap install
 
 Bu işlem sonucunda sunucu üzerinde chroot içerisinde **2.9 GB boyutunda MBR formatlı** saf bir Linux disk imajı oluşturuldu:
 ```text
-/home/ariot/.local/var/pmbootstrap/chroot_native/home/pmos/rootfs/samsung-jflte.img
+~/.local/var/pmbootstrap/chroot_native/home/pmos/rootfs/samsung-jflte.img
 ```
 
 ---
@@ -74,11 +74,11 @@ Samsung Galaxy S4 (Qualcomm Snapdragon 600 - APQ8064), standart Samsung bootload
 
 1. Telefon **Download Moduna** alındı:  
    `Ses Kısma + Ana Ekran (Home) + Güç Tuşu` kombinasyonuna basılı tutuldu, gelen ekranda `Ses Açma` ile onaylandı.
-2. Telefon doğrudan **Yerel Sunucunun USB portuna** takıldı (`04e8:685d Sasmsung MSM8960` olarak algılandı).
+2. Telefon doğrudan **Yerel Sunucunun USB portuna** takıldı (`04e8:685d Samsung MSM8960` olarak algılandı).
 3. Sunucu üzerinden Heimdall ile flaşlama yapıldı:
 
 ```bash
-sudo heimdall flash --BOOT /home/ariot/lk2nd.img --no-reboot
+sudo heimdall flash --BOOT ~/lk2nd.img --no-reboot
 ```
 `BOOT upload successful` yanıtından sonra cihaz otomatik olarak `lk2nd` ile yeniden başladı.
 
@@ -159,12 +159,12 @@ Artık cihaz açılırken tüm Linux çekirdek logları doğrudan telefon ekran�
 
 ## 🚀 8. Adım: Wi-Fi, Tailscale ve Tor Gateway Kurulumu
 
-Telefon ofis Wi-Fi ağına bağlandı ve bağımsız bir ağ geçidi yapıldı:
+Telefon yerel Wi-Fi ağına bağlandı ve bağımsız bir ağ geçidi yapıldı:
 
 ```bash
 # 1. Wi-Fi bağlantısı
-sudo nmcli dev wifi connect "ARIOT" password "SIFRENIZ"
-# IP Alındı: 192.168.100.8
+sudo nmcli dev wifi connect "KABLOSUZ_AG_ADINIZ" password "KABLOSUZ_AG_SIFRENIZ"
+# Cihaz yerel ağdan otomatik DHCP IP'sini alacaktır (Örn: 192.168.1.50)
 
 # 2. IP Forwarding (Çekirdek yönlendirmesi)
 echo 'net.ipv4.ip_forward = 1' | sudo tee /etc/sysctl.d/99-tailscale.conf
@@ -175,7 +175,8 @@ sudo apk add tailscale tailscale-systemd tor curl
 sudo systemctl enable --now tailscaled
 
 # 4. Tailscale Subnet Router ve Exit Node olarak başlatma
-sudo tailscale up --advertise-exit-node --advertise-routes=192.168.100.0/24 --hostname=galaxy-s4-gateway
+# (192.168.1.0/24 yerine kendi yerel alt ağınızı yazabilirsiniz)
+sudo tailscale up --advertise-exit-node --advertise-routes=192.168.1.0/24 --hostname=galaxy-s4-gateway
 ```
 
 Tailscale admin panelinden onay verilerek işlem tamamlandı!

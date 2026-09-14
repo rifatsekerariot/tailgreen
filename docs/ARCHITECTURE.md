@@ -21,14 +21,14 @@ TailGreen, eski bir mobil cihazın tüm donanım bileşenlerini (SoC, RAM, Wi-Fi
 │  ┌───────────────────────────────────────────────────┐  │
 │  │ OS: postmarketOS edge (Alpine Linux 3.20+)        │  │
 │  │ Kernel: Linux 7.1.x mainline (apq8064)            │  │
-│  │ IP: 100.72.43.121 (Tailscale) / 192.168.100.8     │  │
+│  │ IP: 100.x.y.z (Tailscale) / 192.168.1.x (Yerel)   │  │
 │  └─────────────────────────┬─────────────────────────┘  │
 │                            │                            │
 │         ┌──────────────────┴──────────────────┐         │
 │         ▼                                     ▼         │
 │  ┌──────────────┐                      ┌──────────────┐ │
 │  │ Subnet Route │                      │  Tor Proxy   │ │
-│  │ (192.168.x.x)│                      │ (Port: 9050) │ │
+│  │ (192.168.1.x)│                      │ (Port: 9050) │ │
 │  └──────┬───────┘                      └──────┬───────┘ │
 └─────────┼─────────────────────────────────────┼─────────┘
           │                                     │
@@ -54,7 +54,7 @@ TailGreen, eski bir mobil cihazın tüm donanım bileşenlerini (SoC, RAM, Wi-Fi
    - NAT aşma (NAT Traversal - STUN/DERP) özelliği sayesinde port açmaya gerek duymaz.
    - CGNAT arkasındaki kurumsal ağlarda bile dışarıdan doğrudan çift yönlü bağlantı kurar.
    - `--advertise-exit-node`: Cihazı tüm internet trafiğinin çıkış noktası yapar.
-   - `--advertise-routes=192.168.100.0/24`: Dışarıdaki kullanıcının ofisteki tüm yerel sunuculara erişmesini sağlar.
+   - `--advertise-routes=192.168.1.0/24`: Dışarıdaki kullanıcının yerel ağdaki tüm sunuculara erişmesini sağlar.
 
 2. **Tor SOCKS5 Anonymizer:**
    - `0.0.0.0:9050` portunda dinler.

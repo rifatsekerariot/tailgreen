@@ -45,7 +45,7 @@ Geleneksel olarak dışarıdan bir yerel ağa (ofis, ev veya veri merkezi) güve
 **TailGreen ile:**
 - Telefon Android işletim sisteminden tamamen arındırıldı ve saf **postmarketOS (Alpine Linux)** kuruldu.
 - Çekirdek seviyesinde **WireGuard** ve **Tailscale** entegre edilerek port açma ihtiyacı ortadan kaldırıldı (CGNAT Bypass).
-- `--advertise-exit-node` ve `--advertise-routes=192.168.100.0/24` yetenekleri kazandırılarak cihaz **Ofis İçi Ağ Geçidi (Subnet Router)** yapıldı.
+- `--advertise-exit-node` ve `--advertise-routes=192.168.1.0/24` yetenekleri kazandırılarak cihaz **Yerel Ağ Geçidi (Subnet Router)** yapıldı.
 - **Tor SOCKS5 Proxy** entegre edilerek halka açık güvensiz Wi-Fi ağlarında %100 iz bırakmayan şifreli gezinme sağlandı.
 - Grafik arayüzler kaldırılarak sistem **saf TTY / Framebuffer konsoluna** bağlandı; minimum enerji tüketimi (~2W) ve maksimum kararlılık elde edildi.
 
@@ -55,7 +55,7 @@ Geleneksel olarak dışarıdan bir yerel ağa (ofis, ev veya veri merkezi) güve
 
 Bu projenin hayata geçirilmesinde karşılaşılan ve aşılan en önemli teknik engel:
 - **macOS Fastboot AVB Tuzağı:** macOS üzerindeki modern Android Platform-Tools (Fastboot v35+), `userdata` bölümüne ham Linux imajı yazarken Android Verified Boot (AVB) footer hatası vererek süreci kilitliyordu.
-- **Yerel Ubuntu Sunucusu Çözümü:** Süreç doğrudan ağımızdaki **Yerel Ubuntu Linux Sunucusuna (`192.168.100.9`)** taşındı.
+- **Yerel Linux Sunucusu Çözümü:** Süreç doğrudan yerel ağdaki bir **Ubuntu/Debian Linux Sunucusuna** taşındı.
   1. `pmbootstrap` chroot ortamında 2.9 GB'lık saf MBR disk imajı derlendi.
   2. Telefon Download modunda sunucunun USB'sine takılarak `heimdall flash --BOOT lk2nd.img` ile ikincil bootloader yüklendi.
   3. Cihaz `lk2nd` fastboot modundayken Debian `fastboot v34.0.4` ile 2.9GB rootfs sparse formatında 3 parçada (784MB + 774MB + 80MB) telefona başarıyla aktarıldı.

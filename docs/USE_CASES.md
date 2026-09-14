@@ -13,7 +13,7 @@ TailGreen, sadece bir hobi projesi değil; sahada, veri merkezlerinde, ofislerde
 
 ### Senaryo B: Ofis / Ev İçin Sabit Yeşil Ağ Geçidi (Subnet Router)
 - **Sorun:** Statik IP için servis sağlayıcıya aylık ücret ödemek istemiyorsunuz veya modeminiz CGNAT arkasında olduğu için dışarıdan ofis içi sunuculara erişemiyorsunuz.
-- **Çözüm:** TailGreen cihazı ofiste prizde ve Wi-Fi'da durur. Dışarıdayken Tailscale açtığınızda tüm ofis yerel ağı (`192.168.100.x`) elinizin altındadır.
+- **Çözüm:** TailGreen cihazı ofiste prizde ve Wi-Fi'da durur. Dışarıdayken Tailscale açtığınızda tüm yerel ağınız (`192.168.1.x`) elinizin altındadır.
 - **Kimler Kullanır:** KOBİ'ler, Ar-Ge laboratuvarları, uzaktan çalışan ekipler.
 
 ### Senaryo C: Kafelerde ve Seyahatte İz Bırakmayan İnternet (Exit Node + Tor)

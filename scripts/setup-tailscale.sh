@@ -15,7 +15,8 @@ echo "==> [TailGreen] Tailscale Servisi Başlatılıyor..."
 sudo systemctl enable --now tailscaled
 
 echo "==> [TailGreen] Tailscale Ağına Bağlanılıyor (Exit-Node & Subnet Route)..."
-sudo tailscale up --advertise-exit-node --advertise-routes=192.168.100.0/24 --hostname=galaxy-s4-gateway --reset
+LOCAL_SUBNET="${1:-192.168.1.0/24}"
+sudo tailscale up --advertise-exit-node --advertise-routes="$LOCAL_SUBNET" --hostname=galaxy-s4-gateway --reset
 
-echo "==> [TailGreen] Kurulum Başarılı!"
+echo "==> [TailGreen] Kurulum Başarılı! (Alt ağ: $LOCAL_SUBNET)"
 tailscale status
