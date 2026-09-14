@@ -105,8 +105,25 @@ sudo sh scripts/setup-tor.sh
 
 ---
 
+## 📱 Desteklenen Donanımlar & Alternatif Cihazlar
+
+TailGreen mimarisi sadece Samsung Galaxy S4'e özgü değildir; elinizdeki pek çok farklı atıl veya gömülü donanımda hayata geçirilebilir:
+
+| Cihaz Grubu | Örnek Donanımlar | Rol ve Yetenek |
+| :--- | :--- | :--- |
+| **Eski Akıllı Telefonlar (En İyisi)** | Samsung S3/S4/S5, Nexus 4/5, Xiaomi Redmi 2/4X | 7/24 Kesintisiz Pilli Gateway, Donanımsal Ekran, 4G LTE |
+| **Mini SBC (Tek Kart PC)** | **Raspberry Pi Zero W / Zero 2 W** | Cep boyutu USB Kurtarma Dongle'ı (OTG Gadget Ethernet) |
+| **Standart SBC'ler** | Raspberry Pi 3/4/5, Orange Pi Zero 2/3 | Sabit Ofis/Ev Ağ Geçidi |
+| **Eski Android TV Box'lar** | Amlogic S905/S912 işlemcili kutular (Armbian) | Kablolu Ethernet Gateway |
+| **Mikrodenetleyiciler (MCU)** | **ESP32, ESP32-S3** | Hafif Gömülü WireGuard İstemcisi & IoT Sensör Düğümü |
+
+> 📖 Detaylı donanım karşılaştırma matrisi, ESP32 gömülü WireGuard senaryoları ve Pi Zero konfigürasyonları için [docs/COMPATIBLE_DEVICES.md](docs/COMPATIBLE_DEVICES.md) kılavuzunu inceleyebilirsiniz.
+
+---
+
 ## 📚 Dokümantasyon
 
+- 📱 [Desteklenen Cihazlar & Donanım Rehberi (COMPATIBLE_DEVICES.md)](docs/COMPATIBLE_DEVICES.md)
 - 🛠️ [Adım Adım Kurulum Rehberi (INSTALLATION.md)](docs/INSTALLATION.md)
 - 📐 [Sistem ve Ağ Mimarisi (ARCHITECTURE.md)](docs/ARCHITECTURE.md)
 - 🌱 [E-Atık ve Sürdürülebilirlik Raporu (GREEN_IMPACT.md)](docs/GREEN_IMPACT.md)
