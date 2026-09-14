@@ -51,6 +51,20 @@ Geleneksel olarak dışarıdan bir yerel ağa (ofis, ev veya veri merkezi) güve
 
 ---
 
+## 🖥️ Yerel Sunucu Derleme ve Flaşlama Mimarisi (Mühendislik Notu)
+
+Bu projenin hayata geçirilmesinde karşılaşılan ve aşılan en önemli teknik engel:
+- **macOS Fastboot AVB Tuzağı:** macOS üzerindeki modern Android Platform-Tools (Fastboot v35+), `userdata` bölümüne ham Linux imajı yazarken Android Verified Boot (AVB) footer hatası vererek süreci kilitliyordu.
+- **Yerel Ubuntu Sunucusu Çözümü:** Süreç doğrudan ağımızdaki **Yerel Ubuntu Linux Sunucusuna (`192.168.100.9`)** taşındı.
+  1. `pmbootstrap` chroot ortamında 2.9 GB'lık saf MBR disk imajı derlendi.
+  2. Telefon Download modunda sunucunun USB'sine takılarak `heimdall flash --BOOT lk2nd.img` ile ikincil bootloader yüklendi.
+  3. Cihaz `lk2nd` fastboot modundayken Debian `fastboot v34.0.4` ile 2.9GB rootfs sparse formatında 3 parçada (784MB + 774MB + 80MB) telefona başarıyla aktarıldı.
+  4. Sunucuya `/etc/udev/rules.d/99-phone-usb.rules` kuralı eklenerek, telefon USB'den bağlandığı anda sunucunun `172.16.42.2`, telefonun ise `172.16.42.1` alması sağlandı.
+
+> 📖 Tüm derleme komutları, Heimdall adımları ve hata çözümleri için [docs/INSTALLATION.md](docs/INSTALLATION.md) belgesini inceleyebilirsiniz.
+
+---
+
 ## 🔌 Donanımsal Kurtarma Anahtarı (OOB Rescue Dongle)
 
 Bu cihazın en kritik özelliklerinden biri taşınabilir **"Donanımsal Arka Kapı / Kurtarma Cihazı (Out-of-Band Management)"** olarak çalışabilmesidir:
