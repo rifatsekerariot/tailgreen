@@ -1,5 +1,8 @@
-# 🌱 TailGreen
-> **"Yapay Zeka Çıktı Mertlik Bozuldu 7: Çöpe Atılan Eski Telefondan Sıfır Maliyetli, Pilli Linux VPN & Tor Gateway (Yeşil Dönüşüm)"**
+<div align="center">
+  <img src="assets/tailgreen-cover.jpg" alt="TailGreen Cover - Yapay Zeka Çıktı Mertlik Bozuldu 7" width="100%" style="border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.4);" />
+</div>
+
+<br />
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![OS: postmarketOS](https://img.shields.io/badge/OS-postmarketOS%20edge-blue.svg)](https://postmarketos.org/)
@@ -10,11 +13,11 @@
 
 ---
 
-## 📸 Proje Görseli
+## 📸 Canlı Donanım ve Sistem Görüntüsü
 
 <div align="center">
-  <img src="assets/device-showcase.jpg" alt="TailGreen - Samsung Galaxy S4 Linux TTY Konsolu" width="650px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" />
-  <p><em>Fotoğraf: postmarketOS (Alpine Linux) ve Framebuffer Konsolunun fiziksel AMOLED ekran üzerinde çalışırken çekilmiş canlı görüntüsü.</em></p>
+  <img src="assets/device-showcase.jpg" alt="TailGreen - Samsung Galaxy S4 Linux TTY Konsolu" width="600px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" />
+  <p><em>Fotoğraf: Samsung Galaxy S4 üzerinde postmarketOS (Alpine Linux) ve Framebuffer Konsolunun fiziksel AMOLED ekrandan canlı görüntüsü (<code>samsung-jflte login:</code>).</em></p>
 </div>
 
 ---
