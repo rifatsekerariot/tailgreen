@@ -1,0 +1,119 @@
+# 🌱 TailGreen
+> **"Yapay Zeka Çıktı Mertlik Bozuldu 7: Çöpe Atılan Eski Telefondan Sıfır Maliyetli, Pilli Linux VPN & Tor Gateway (Yeşil Dönüşüm)"**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![OS: postmarketOS](https://img.shields.io/badge/OS-postmarketOS%20edge-blue.svg)](https://postmarketos.org/)
+[![Kernel: Linux 7.1](https://img.shields.io/badge/Kernel-Linux%207.1%20Mainline-orange.svg)](https://kernel.org/)
+[![Tailscale: Mesh VPN](https://img.shields.io/badge/VPN-Tailscale%20%2F%20WireGuard-success.svg)](https://tailscale.com/)
+[![Tor: Anonymity](https://img.shields.io/badge/Privacy-Tor%20SOCKS5-purple.svg)](https://torproject.org/)
+[![Green Impact: 100% E-Waste Reduction](https://img.shields.io/badge/Green%20Impact-100%25%20Upcycling-brightgreen.svg)](#-yeşil-dönüşüm-ve-sürdürülebilirlik-etkisi)
+
+---
+
+## 📸 Proje Görseli
+
+<div align="center">
+  <img src="assets/device-showcase.jpg" alt="TailGreen - Samsung Galaxy S4 Linux TTY Konsolu" width="650px" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);" />
+  <p><em>Fotoğraf: postmarketOS (Alpine Linux) ve Framebuffer Konsolunun fiziksel AMOLED ekran üzerinde çalışırken çekilmiş canlı görüntüsü.</em></p>
+</div>
+
+---
+
+## 📌 Proje Nedir ve Neden Yapıldı?
+
+**TailGreen**, çekmecelerde unutulmuş ya da elektronik atık (E-Waste) olarak çöpe gitmeye terk edilmiş eski bir akıllı telefonu (**Samsung Galaxy S4 GT-I9505**); 
+- **Dahili kesintisiz güç kaynağı (UPS / Batarya)**,
+- **4 çekirdekli Qualcomm işlemci**,
+- **2 GB LPDDR3 RAM**,
+- **Dahili Wi-Fi & 4G LTE modem** ve
+- **Fiziksel AMOLED bilgi ekranı**  
+içeren, 7/24 kesintisiz çalışan, sıfır maliyetli bir **Kurumsal VPN Gateway & Tor Gizlilik Köprüsü**'ne dönüştüren açık kaynaklı bir **Yeşil Dönüşüm (E-Waste Upcycling)** projesidir.
+
+---
+
+## 🎯 Teknik Olarak Ne Amaçla Yapıldı?
+
+Geleneksel olarak dışarıdan bir yerel ağa (ofis, ev veya veri merkezi) güvenle bağlanabilmek için:
+1. Pahalı kurumsal VPN yönlendiricileri (Cisco, Fortinet, pfSense veya Raspberry Pi kitleri) satın almak,
+2. İnternet servis sağlayıcılarına her ay **Statik IP ücreti** ödemek,
+3. Elektrik kesintilerine karşı harici akü/UPS donanımı kurmak,
+4. Karmaşık port yönlendirme (Port Forwarding) ve CGNAT sorunlarıyla uğraşmak gerekiyordu.
+
+**TailGreen ile:**
+- Telefon Android işletim sisteminden tamamen arındırıldı ve saf **postmarketOS (Alpine Linux)** kuruldu.
+- Çekirdek seviyesinde **WireGuard** ve **Tailscale** entegre edilerek port açma ihtiyacı ortadan kaldırıldı (CGNAT Bypass).
+- `--advertise-exit-node` ve `--advertise-routes=192.168.100.0/24` yetenekleri kazandırılarak cihaz **Ofis İçi Ağ Geçidi (Subnet Router)** yapıldı.
+- **Tor SOCKS5 Proxy** entegre edilerek halka açık güvensiz Wi-Fi ağlarında %100 iz bırakmayan şifreli gezinme sağlandı.
+- Grafik arayüzler kaldırılarak sistem **saf TTY / Framebuffer konsoluna** bağlandı; minimum enerji tüketimi (~2W) ve maksimum kararlılık elde edildi.
+
+---
+
+## 🔌 Donanımsal Kurtarma Anahtarı (OOB Rescue Dongle)
+
+Bu cihazın en kritik özelliklerinden biri taşınabilir **"Donanımsal Arka Kapı / Kurtarma Cihazı (Out-of-Band Management)"** olarak çalışabilmesidir:
+- İnternete çıkışı olmayan veya VPN kurulamayan kilitli bir sunucunun USB portuna bu telefonu taktığınız anda;
+- Sunucu telefonu anında bir **USB Ağ Kartı (`cdc_ncm`)** olarak görür.
+- Telefon kendi Wi-Fi veya SIM kartı üzerinden Tailscale ağına bağlı kalır.
+- Siz dünyanın öbür ucundan Tailscale üzerinden telefona, telefon üzerinden de USB ile bağlı sunucuya **anında SSH veya Uzak Masaüstü** yapabilirsiniz!
+
+---
+
+## 🌍 Yeşil Dönüşüm ve Sürdürülebilirlik Etkisi
+
+Dünya genelinde yılda **50 milyon tonu aşkın e-atık** üretilmektedir. Akıllı telefonların çoğu donanımları bozulduğu için değil, üreticilerin planlı eskitme (planned obsolescence) politikalarıyla yazılım desteğini kesmesi yüzünden çöpe gitmektedir.
+
+| Karşılaştırma | Yeni Ağ Cihazı / Mini PC | TailGreen (Galaxy S4) | Kazanç |
+| :--- | :--- | :--- | :--- |
+| **Donanım Maliyeti** | $100 - $350 | **$0 (Atıl cihaz kullanıldı)** | **%100 Tasarruf** |
+| **Üretim Kaynaklı Karbon (Embodied CO₂)** | ~40 kg CO₂e | **0 kg CO₂e** | **Sıfır Yeni Emisyon** |
+| **Enerji Tüketimi (7/24)** | 10W - 25W | **~2W - 3W** | **%80 Enerji Tasarrufu** |
+| **Kesintisiz Güç Kaynağı** | Ayrı UPS Gerekir (~$80) | **Dahili Batarya (UPS)** | **Dahili Koruma** |
+
+---
+
+## 👥 Bu Projenin Kime Ne Faydası Var?
+
+1. **Sistem Yöneticileri & DevOps Mühendisleri:**  
+   Ceplerinde taşıyabilecekleri, sahada internetsiz bir sunucuya USB'den taktıkları anda acil uzaktan erişim sağlayan bir "Donanımsal OOB Kurtarma Aracı".
+2. **KOBİ'ler ve Ofisler:**  
+   Statik IP parası vermeden ve pahalı firewall kutuları almadan ofis içi sunuculara ve kamera sistemlerine dışarıdan şifreli erişim.
+3. **Öğrenciler ve Yazılımcılar:**  
+   Evdeki masaüstü bilgisayarlarına veya geliştirme ortamlarına okuldan/kafeden sıfır maliyetle bağlanabilme imkanı.
+4. **Gizlilik Odaklı Kullanıcılar:**  
+   Havalimanı, otel ve kafelerde güvensiz ağlara bağlanırken tüm trafiği ev/ofis üzerinden Tor ağıyla şifreleyerek çıkarma güvenliği.
+
+---
+
+## 🛠️ Hızlı Kurulum
+
+Detaylı adım adım adımlar için [docs/INSTALLATION.md](docs/INSTALLATION.md) belgesini inceleyebilirsiniz.
+
+```bash
+# 1. Depoyu klonlayın
+git clone https://github.com/rifatsekerariot/tailgreen.git
+cd tailgreen
+
+# 2. Telefonda TTY konsol modunu etkinleştirin (Arayüzsüz)
+sudo sh scripts/setup-tty-console.sh
+
+# 3. Tailscale ve Subnet Routing kurun
+sudo sh scripts/setup-tailscale.sh
+
+# 4. Tor SOCKS5 anonimleştirme servisini başlatın
+sudo sh scripts/setup-tor.sh
+```
+
+---
+
+## 📚 Dokümantasyon
+
+- 🛠️ [Adım Adım Kurulum Rehberi (INSTALLATION.md)](docs/INSTALLATION.md)
+- 📐 [Sistem ve Ağ Mimarisi (ARCHITECTURE.md)](docs/ARCHITECTURE.md)
+- 🌱 [E-Atık ve Sürdürülebilirlik Raporu (GREEN_IMPACT.md)](docs/GREEN_IMPACT.md)
+- 💼 [Kullanım Senaryoları & İş Modelleri (USE_CASES.md)](docs/USE_CASES.md)
+
+---
+
+## 🤝 Katkıda Bulunma ve Lisans
+
+Bu proje, açık kaynak ve yeşil bilişim ilkeleri doğrultusunda [MIT Lisansı](LICENSE) ile lisanslanmıştır. Eski cihazlarınızı çöpe atmayın, Linux ile hayata döndürün! 🌱
