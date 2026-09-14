@@ -59,7 +59,7 @@ Bu projenin hayata geçirilmesinde karşılaşılan ve aşılan en önemli tekni
   1. `pmbootstrap` chroot ortamında 2.9 GB'lık saf MBR disk imajı derlendi.
   2. Telefon Download modunda sunucunun USB'sine takılarak `heimdall flash --BOOT lk2nd.img` ile ikincil bootloader yüklendi.
   3. Cihaz `lk2nd` fastboot modundayken Debian `fastboot v34.0.4` ile 2.9GB rootfs sparse formatında 3 parçada (784MB + 774MB + 80MB) telefona başarıyla aktarıldı.
-  4. Sunucuya `/etc/udev/rules.d/99-phone-usb.rules` kuralı eklenerek, telefon USB'den bağlandığı anda sunucunun `172.16.42.2`, telefonun ise `172.16.42.1` alması sağlandı.
+  4. Sunucuya `/etc/udev/rules.d/99-phone-usb.rules` kuralı eklenerek, telefon USB'den bağlandığı anda sunucu ile cihaz arasında otomatik yerel USB ağ köprüsü kurulması ve doğrudan SSH erişimi sağlandı.
 
 > 📖 Tüm derleme komutları, Heimdall adımları ve hata çözümleri için [docs/INSTALLATION.md](docs/INSTALLATION.md) belgesini inceleyebilirsiniz.
 

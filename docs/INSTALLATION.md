@@ -120,14 +120,15 @@ Telefon USB'den takılıyken bağlantının her kopup yeniden bağlanmasında su
 
 ```bash
 # /etc/udev/rules.d/99-phone-usb.rules
-SUBSYSTEM=="net", ACTION=="add", KERNEL=="enx*", RUN+="/bin/sh -c 'ip addr add 172.16.42.2/24 dev %k 2>/dev/null; ip link set dev %k up'"
+# (Gerektiğinde IP bloğunu kendi ağ yapılandırmanıza göre belirleyebilirsiniz)
+SUBSYSTEM=="net", ACTION=="add", KERNEL=="enx*", RUN+="/bin/sh -c 'ip addr add 172.16.0.2/24 dev %k 2>/dev/null; ip link set dev %k up'"
 ```
 
 Kurallar yeniden yüklendi:
 ```bash
 sudo udevadm control --reload-rules
 ```
-Böylece telefon sunucuya takıldığı anda sunucu `172.16.42.2`, telefon ise `172.16.42.1` adresini anında alır ve SSH bağlantısı asla kesilmez.
+Böylece telefon sunucuya takıldığı anda sunucu ile cihaz arasında anında doğrudan bir USB ağ arayüzü ayağa kalkar ve doğrudan SSH erişimi kesintisiz sağlanır.
 
 ---
 
